@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Práticas Sustentáveis</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1>Práticas Sustentáveis</h1>
+
+      <nav class="main-nav">
+        <button data-view="cadastro" class="nav-btn active">Cadastro</button>
+        <button data-view="historico" class="nav-btn">Histórico</button>
+        <button data-view="relatorio" class="nav-btn">Relatório</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section id="view-cadastro" class="view">
+        <h2>Cadastro de Prática</h2>
+
+        <form id="form-cadastro" class="card">
+          <label>Nome do usuário (obrigatório)
+            <input type="text" name="nomeUsuario" required>
+          </label>
+
+          <label>Tipo da prática (obrigatório)
+            <input type="text" name="tipo" list="tipos" required>
+
+            <datalist id="tipos">
+              <option value="Reciclagem"></option>
+              <option value="Economia de água"></option>
+              <option value="Transporte sustentável"></option>
+              <option value="Energia renovável"></option>
+            </datalist>
+          </label>
+
+          <label>Data (YYYY-MM-DD) (obrigatório)
+            <input type="date" name="data" required>
+          </label>
+
+          <label>Descrição (opcional)
+            <textarea name="descricao" rows="3"></textarea>
+          </label>
+
+          <div class="actions">
+            <button type="submit">Enviar prática</button>
+            <span id="cadastro-msg" class="msg" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>
+
+      <section id="view-historico" class="view" hidden>
+        <h2>Histórico de Práticas</h2>
+
+        <form id="form-filtros" class="card small">
+          <label>Nome do usuário
+            <input type="text" name="nomeUsuario">
+          </label>
+
+          <label>Tipo da prática
+            <input type="text" name="tipo">
+          </label>
+
+          <label>Data inicial
+            <input type="date" name="dataInicial">
+          </label>
+
+          <label>Data final
+            <input type="date" name="dataFinal">
+          </label>
+
+          <div class="actions">
+            <button type="submit">Consultar</button>
+            <button type="button" id="btn-limpar">Limpar</button>
+          </div>
+        </form>
+
+        <div id="historico-list" class="list">Nenhuma consulta realizada.</div>
+      </section>
+
+      <section id="view-relatorio" class="view" hidden>
+        <h2>Relatório Resumido</h2>
+        <div id="relatorio" class="cards">Carregando...</div>
+      </section>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
